@@ -17,7 +17,11 @@ const employeeSchema = mongoose.Schema(
     address: { type: String, required: true },
     phone: { type: String, required: true },
     designation: { type: String, required: true },
-    department: { type: String, required: true },
+    departmentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Department",
+    },
     hireDate: { type: Date, required: true },
     salary: { type: Number, required: true },
     documents: [
