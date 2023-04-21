@@ -8,9 +8,10 @@ const leaveSchema = mongoose.Schema(
       ref: "Employee",
     },
     leaveType: { type: String, required: true },
+    description: { type: String },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
-    status: { type: String, required: true },
+    status: { type: String, required: true, default: "pending" },
   },
   {
     timestamps: true,
