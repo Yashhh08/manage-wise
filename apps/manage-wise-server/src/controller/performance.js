@@ -57,4 +57,45 @@ router.get("/performances", auth, async (req, res) => {
   }
 });
 
+router.get("/performances/employee/:employeeId", auth, async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(401).send({ message: "unAuthorized..!!" });
+    }
+
+    const empId = req.params.employeeId;
+
+    const employee = await Employee.findById(empId);
+
+    if (!employee) {
+      return res
+        .status(404)
+        .send({ error: `No employee found with id ${empId}` });
+    }
+
+    let limit = 0;
+    let skip = 0;
+
+    if (req.query.limit) {
+      limit = parseInt(req.query.limit);
+    }
+
+    if (req.query.skip) {
+      skip = parseInt(req.query.skip);
+    }
+
+    const performance = await Performance.find({ employeeId: employee._id })
+      .limit(limit)
+      .skip(skip);
+
+    if (!performance) {
+      res.status(404).send({ error: "No record found..!!" });
+    } else {
+      res.status(200).send(performance);
+    }
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
 module.exports = router;
