@@ -76,11 +76,24 @@ router.get("/employees/department/:departmentId", auth, async (req, res) => {
       return res.status(401).send({ error: "unAuthorized..!!" });
     }
 
+    let limit = 0;
+    let skip = 0;
+
+    if (req.query.limit) {
+      limit = parseInt(req.query.limit);
+    }
+
+    if (req.query.skip) {
+      skip = parseInt(req.query.skip);
+    }
+
     const departmentId = req.params.departmentId;
 
     const department = await Department.findById(departmentId);
 
-    const employees = await Employee.find({ departmentId: departmentId });
+    const employees = await Employee.find({ departmentId: departmentId })
+      .limit(limit)
+      .skip(skip);
 
     if (employees.length > 0) {
       res.status(200).send(employees);
