@@ -24,14 +24,27 @@ router.post("/performances", auth, async (req, res) => {
 
 router.get("/performances", auth, async (req, res) => {
   try {
+    let limit = 0;
+    let skip = 0;
+
+    if (req.query.limit) {
+      limit = parseInt(req.query.limit);
+    }
+
+    if (req.query.skip) {
+      skip = parseInt(req.query.skip);
+    }
+
     let performances = null;
 
     if (req.user.role === "admin") {
-      performances = await Performance.find();
+      performances = await Performance.find().limit(limit).skip(skip);
     } else {
       const employee = await Employee.findOne({ email: req.user.email });
 
-      performances = await Performance.find({ employeeId: employee._id });
+      performances = await Performance.find({ employeeId: employee._id })
+        .limit(limit)
+        .skip(skip);
     }
 
     if (!performances || performances.length === 0) {
