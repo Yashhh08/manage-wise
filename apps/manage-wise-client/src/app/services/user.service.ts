@@ -12,11 +12,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  createUser(user: unknown): Observable<unknown> {
+  createUser(user: unknown): Observable<any> {
     return this.http.post(`${this.url}`, user);
   }
 
-  login(user: unknown): Observable<unknown> {
+  login(user: unknown): Observable<any> {
     return this.http.post(`${this.url}/login`, user);
   }
 
@@ -28,23 +28,23 @@ export class UserService {
     return this.http.post<void>(`${this.url}/logoutAll`, {});
   }
 
-  getProfile(): Observable<unknown> {
+  getProfile(): Observable<any> {
     return this.http.get(`${this.url}/profile`);
   }
 
-  getAllUsers(limit: number, skip: number): Observable<unknown> {
+  getAllUsers(limit: number, skip: number): Observable<any> {
     return this.http.get(`${this.url}?limit=${limit}&skip=${skip}`);
   }
 
-  getUserById(id: string): Observable<unknown> {
+  getUserById(id: string): Observable<any> {
     return this.http.get(`${this.url}/${id}`);
   }
 
-  updateUser(id: string, body: unknown): Observable<unknown> {
+  updateUser(id: string, body: unknown): Observable<any> {
     return this.http.patch(`${this.url}/${id}`, body);
   }
 
-  deleteUser(id: string): Observable<unknown> {
+  deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
 

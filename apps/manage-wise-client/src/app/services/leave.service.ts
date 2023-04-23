@@ -12,23 +12,23 @@ export class LeaveService {
 
   constructor(private http: HttpClient) { }
 
-  addLeave(leave: unknown): Observable<unknown> {
+  addLeave(leave: unknown): Observable<any> {
     return this.http.post(this.url, leave);
   }
 
-  getLeaves(limit: number, skip: number): Observable<unknown> {
+  getLeaves(limit: number, skip: number): Observable<any> {
     return this.http.get(`${this.url} ? limit = ${limit} & skip=${skip}`);
   }
 
-  getLeaveById(id: string): Observable<unknown> {
+  getLeaveById(id: string): Observable<any> {
     return this.http.get(`${this.url} / ${id}`);
   }
 
-  updateLeave(id: string, leave: unknown): Observable<unknown> {
+  updateLeave(id: string, leave: unknown): Observable<any> {
     return this.http.patch(`${this.url} / ${id}`, leave);
   }
 
-  deleteLeave(id: string): Observable<unknown> {
+  deleteLeave(id: string): Observable<any> {
     return this.http.delete(`${this.url} / ${id}`);
   }
 

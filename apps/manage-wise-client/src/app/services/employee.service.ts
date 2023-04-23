@@ -11,27 +11,27 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  addEmployee(employee: unknown): Observable<unknown> {
+  addEmployee(employee: unknown): Observable<any> {
     return this.http.post(`${this.url}`, employee);
   }
 
-  getAllEmployees(limit: number, skip: number): Observable<unknown> {
+  getAllEmployees(limit: number, skip: number): Observable<any> {
     return this.http.get(`${this.url}?limit=${limit}&skip=${skip}`);
   }
 
-  getEmployeeById(id: string): Observable<unknown> {
+  getEmployeeById(id: string): Observable<any> {
     return this.http.get(`${this.url}/${id}`);
   }
 
-  getEmployeesByDepartmentId(departmentId: string, limit: number, skip: number): Observable<unknown> {
+  getEmployeesByDepartmentId(departmentId: string, limit: number, skip: number): Observable<any> {
     return this.http.get(`${this.url}/department/${departmentId}?limit=${limit}&skip=${skip}`);
   }
 
-  editEmployee(id: string, employee: unknown): Observable<unknown> {
+  editEmployee(id: string, employee: unknown): Observable<any> {
     return this.http.patch(`${this.url}/${id}`, employee);
   }
 
-  deleteEmployee(id: string): Observable<unknown> {
+  deleteEmployee(id: string): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
 

@@ -11,15 +11,15 @@ export class PerformanceService {
 
   constructor(private http: HttpClient) { }
 
-  addPerformance(performance: unknown): Observable<unknown> {
+  addPerformance(performance: unknown): Observable<any> {
     return this.http.post(this.url, performance);
   }
 
-  getPerformances(limit: number, skip: number): Observable<unknown> {
+  getPerformances(limit: number, skip: number): Observable<any> {
     return this.http.get(`${this.url} ? limit = ${limit} & skip=${skip}`);
   }
 
-  getPerformanceByEmployeeId(id: string, limit: number, skip: number): Observable<unknown> {
+  getPerformanceByEmployeeId(id: string, limit: number, skip: number): Observable<any> {
     return this.http.get(`${this.url}/employee/${id} ? limit = ${limit} & skip=${skip}`);
   }
 
