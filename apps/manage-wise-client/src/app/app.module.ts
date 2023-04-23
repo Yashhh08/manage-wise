@@ -13,9 +13,23 @@ import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyPrimeNGModule } from '@ngx-formly/primeng';
+
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { CardModule } from 'primeng/card';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,11 +38,22 @@ import { FormsModule } from '@angular/forms';
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     RippleModule,
     ButtonModule,
-    CheckboxModule
+    CheckboxModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot(),
+    FormlyPrimeNGModule,
+    InputTextModule,
+    PasswordModule,
+    CardModule,
+    MessageModule,
+    MessagesModule,
+    ToastModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    MessageService
   ],
   bootstrap: [AppComponent],
+  exports: [LoginComponent],
 })
 export class AppModule { }

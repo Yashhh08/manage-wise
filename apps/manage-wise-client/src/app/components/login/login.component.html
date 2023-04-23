@@ -1,0 +1,56 @@
+<p-toast></p-toast>
+<div class="login-wrapper">
+  <div class="form-wrapper">
+    <h1>Manage Wise</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Login</h2>
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="p-inputtext p-component"
+          />
+          <small
+            *ngIf="
+              loginForm.get('email')?.hasError('required') &&
+              loginForm.get('email')?.touched
+            "
+            class="p-error"
+            >Email is required.</small
+          >
+          <small
+            *ngIf="
+              loginForm.get('email')?.hasError('email') &&
+              loginForm.get('email')?.touched
+            "
+            class="p-error"
+            >Invalid email address.</small
+          >
+        </div>
+        <div class="p-field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="p-inputtext p-component"
+          />
+          <small
+            *ngIf="
+              loginForm.get('password')?.hasError('required') &&
+              loginForm.get('password')?.touched
+            "
+            class="p-error"
+            >Password is required.</small
+          >
+        </div>
+      </div>
+      <p-button
+        type="submit"
+        [disabled]="!loginForm.valid"
+        label="Login"
+      ></p-button>
+    </form>
+  </div>
+</div>
