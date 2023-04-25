@@ -1,0 +1,201 @@
+<p-toast></p-toast>
+
+<div class="container">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center" *ngIf="!editMode">Add Employee Details</h2>
+    <h2 style="text-align: center" *ngIf="editMode">Update Employee Details</h2>
+
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="name">Name*</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          class="p-inputtext p-component"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('name')?.invalid &&
+            employeeForm.get('name')?.touched
+          "
+        >
+          Name is required.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="email">Email*</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="p-inputtext p-component"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('email')?.invalid &&
+            employeeForm.get('email')?.touched
+          "
+        >
+          Please enter a valid email.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="address">Address*</label>
+        <textarea
+          id="address"
+          formControlName="address"
+          class="p-inputtext p-component"
+        ></textarea>
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('address')?.invalid &&
+            employeeForm.get('address')?.touched
+          "
+        >
+          Address is required.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="phone">Phone*</label>
+        <input
+          id="phone"
+          type="text"
+          formControlName="phone"
+          class="p-inputtext p-component"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('phone')?.invalid &&
+            employeeForm.get('phone')?.touched
+          "
+        >
+          Phone is required.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="designation">Designation*</label>
+        <input
+          id="designation"
+          type="text"
+          formControlName="designation"
+          class="p-inputtext p-component"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('designation')?.invalid &&
+            employeeForm.get('designation')?.touched
+          "
+        >
+          Designation is required.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="department">Department*</label>
+        <p-dropdown
+          id="department"
+          type="text"
+          formControlName="departmentId"
+          class="p-inputtext p-component"
+          [options]="departments"
+          [(ngModel)]="selectedDepartment"
+          optionLabel="name"
+          optionValue="_id"
+        ></p-dropdown>
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('department')?.invalid &&
+            employeeForm.get('department')?.touched
+          "
+        >
+          Department is required.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="hireDate">Hire Date*</label>
+        <p-calendar
+          id="hireDate"
+          formControlName="hireDate"
+          class="p-inputtext p-component"
+          [showIcon]="true"
+        ></p-calendar>
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('hireDate')?.invalid &&
+            employeeForm.get('hireDate')?.touched
+          "
+        >
+          Hire Date is required.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="salary">Salary*</label>
+        <input
+          id="salary"
+          type="number"
+          formControlName="salary"
+          class="p-inputtext p-component"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('salary')?.invalid &&
+            employeeForm.get('salary')?.touched
+          "
+        >
+          Salary is required.
+        </small>
+      </div>
+      <!-- <div class="p-field">
+        <label for="document">Document</label>
+        <div class="p-inputgroup">
+          <input
+            type="file"
+            name="document"
+            id="document"
+            class="p-inputtext p-component"
+            (change)="onFileSelect($event)"
+            accept=".pdf,.doc,.docx"
+          />
+          <button
+            type="button"
+            pButton
+            icon="pi pi-upload"
+            label="Upload"
+            class="p-button-secondary"
+          ></button>
+        </div>
+        <small
+          class="p-error"
+          *ngIf="
+            employeeForm.get('document')?.invalid &&
+            employeeForm.get('document')?.touched
+          "
+        >
+          Please select a document in PDF or DOC format.
+        </small>
+      </div>-->
+    </div>
+    <div class="card flex justify-content-center">
+      <p-button
+        type="submit"
+        label="Submit"
+        [disabled]="!employeeForm.valid"
+        *ngIf="!editMode"
+      ></p-button>
+      <p-button
+        (click)="updateEmployee()"
+        label="Update"
+        [disabled]="!employeeForm.valid"
+        *ngIf="editMode"
+      ></p-button>
+    </div>
+  </form>
+</div>
