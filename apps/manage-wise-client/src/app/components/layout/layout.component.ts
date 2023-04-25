@@ -52,7 +52,8 @@ export class LayoutComponent implements OnInit {
       {
         label: 'Manage Employee',
         icon: 'pi pi-fw pi-list',
-        routerLink: ['/home/employees']
+        routerLink: ['/home/employees'],
+        visible: role === "admin"
       }
     ];
 
@@ -89,13 +90,13 @@ export class LayoutComponent implements OnInit {
       {
         label: 'Add Leave',
         icon: 'pi pi-fw pi-plus',
-        routerLink: [],
+        routerLink: ['/home/leaveForm'],
         visible: role === "employee"
       },
       {
         label: 'Manage Leave',
         icon: 'pi pi-fw pi-list',
-        routerLink: []
+        routerLink: ['/home/leaves']
       }
     ];
 
@@ -156,9 +157,4 @@ export class LayoutComponent implements OnInit {
       console.log(err);
     })
   }
-
-  profile() {
-    console.log(this.currentUser)
-  }
-
 }

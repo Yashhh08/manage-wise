@@ -4,8 +4,8 @@
 <div class="app-layout">
   <p-sidebar [(visible)]="sidebarVisible">
     <div class="card flex justify-content-center">
-      <p-accordion *ngIf="sidebarVisible ">
-        <p-accordionTab header="Employee">
+      <p-accordion *ngIf="sidebarVisible">
+        <p-accordionTab *ngIf="currentUser.role === 'admin'" header="Employee">
           <div class="card flex justify-content-center">
             <p-menu [model]="employeeTab"></p-menu>
           </div>
