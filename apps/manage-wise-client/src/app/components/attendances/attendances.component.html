@@ -1,0 +1,87 @@
+<p-toast></p-toast>
+<p-confirmPopup></p-confirmPopup>
+
+<div class="topBox">
+  <p-button
+    label="Add Attendance"
+    styleClass="p-button-outlined"
+    (click)="addAttendance()"
+  ></p-button>
+  <input
+    pInputText
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="filterByName()"
+    placeholder="Search by name"
+  />
+</div>
+<div class="card">
+  <p-table
+    dataKey="email"
+    [value]="filteredAttendance"
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rowsPerPageOptions]="[5, 10, 25, 50]"
+    sortMode="multiple"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="employeeId.name" style="width: 20%">
+          Name <p-sortIcon field="employeeId.name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="employeeId.email" style="width: 20%">
+          Email <p-sortIcon field="employeeId.email"></p-sortIcon>
+        </th>
+        <th pSortableColumn="phone" style="width: 20%">
+          Phone <p-sortIcon field="phone"></p-sortIcon>
+        </th>
+        <th pSortableColumn="date" style="width: 20%">
+          Date <p-sortIcon field="date"></p-sortIcon>
+        </th>
+        <th pSortableColumn="inTime" style="width: 20%">
+          In Time <p-sortIcon field="inTime"></p-sortIcon>
+        </th>
+        <th pSortableColumn="outTime" style="width: 20%">
+          Out Time <p-sortIcon field="outTime"></p-sortIcon>
+        </th>
+        <th pSortableColumn="status" style="width: 20%">
+          Status <p-sortIcon field="status"></p-sortIcon>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-attendace>
+      <tr>
+        <td>{{ attendace.employeeId.name }}</td>
+        <td>{{ attendace.employeeId.email }}</td>
+        <td>{{ attendace.employeeId.phone }}</td>
+        <td>{{ attendace.date | date }}</td>
+        <td>{{ attendace.inTime | timeFormat }}</td>
+        <td>{{ attendace.outTime | timeFormat }}</td>
+        <td>{{ attendace.status }}</td>
+        <td>
+          <div style="display: flex; justify-content: space-around">
+            <p-button
+              icon="pi pi-file-edit"
+              styleClass="p-button-rounded p-button-text p-button-raised"
+              (click)="confirmUpdate($event, attendace)"
+            ></p-button>
+            <p-button
+              icon="pi pi-times"
+              styleClass="p-button-rounded p-button-danger p-button-text p-button-raised"
+              (click)="confirmDelete($event, attendace)"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
