@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'manage-wise-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private messageService: MessageService) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private messageService: MessageService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -38,7 +39,10 @@ export class LoginComponent implements OnInit {
 
       this.toastMessage("success", "Success", "Login successfully");
 
+      this.router.navigate(['/home']);
+
       this.loginForm.reset();
+
 
     },
       (err) => {
