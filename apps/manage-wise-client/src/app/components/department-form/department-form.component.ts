@@ -12,7 +12,7 @@ import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 })
 export class DepartmentFormComponent implements OnInit {
 
-  dpeartmentForm!: FormGroup;
+  departmentForm!: FormGroup;
 
   selectedDepartment: any;
 
@@ -24,7 +24,7 @@ export class DepartmentFormComponent implements OnInit {
 
     this.selectedDepartment = this.dynamicDialogConfig.data;
 
-    this.dpeartmentForm = this.fb.group({
+    this.departmentForm = this.fb.group({
       name: new FormControl("", Validators.required),
       head: new FormControl("", Validators.required)
     })
@@ -33,7 +33,7 @@ export class DepartmentFormComponent implements OnInit {
 
       this.editMode = true;
 
-      this.dpeartmentForm.patchValue({
+      this.departmentForm.patchValue({
         name: this.selectedDepartment.name,
         head: this.selectedDepartment.head,
       });
@@ -42,9 +42,9 @@ export class DepartmentFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.dpeartmentForm.value);
-    this.departmentService.addDepartment(this.dpeartmentForm.value).subscribe((res) => {
-      this.dpeartmentForm.reset();
+    // console.log(this.departmentForm.value);
+    this.departmentService.addDepartment(this.departmentForm.value).subscribe((res) => {
+      this.departmentForm.reset();
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Department added Successfully' });
     }, (err) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
@@ -52,7 +52,8 @@ export class DepartmentFormComponent implements OnInit {
   }
 
   updateDepartment() {
-    this.departmentService.updateDepartment(this.selectedDepartment._id, this.dpeartmentForm.value).subscribe((res) => {
+    // console.log(this.selectedDepartment)
+    this.departmentService.updateDepartment(this.selectedDepartment._id, this.departmentForm.value).subscribe((res) => {
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Department Updated Successfully' });
     }, (err) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });

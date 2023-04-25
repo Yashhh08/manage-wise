@@ -1,4 +1,4 @@
-<form [formGroup]="dpeartmentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <h2 style="text-align: center">Department</h2>
     <div class="p-fluid">
@@ -13,8 +13,8 @@
         <small
           class="p-error"
           *ngIf="
-            dpeartmentForm.get('name')?.invalid &&
-            dpeartmentForm.get('name')?.touched
+            departmentForm.get('name')?.invalid &&
+            departmentForm.get('name')?.touched
           "
         >
           Name is required.
@@ -31,8 +31,8 @@
         <small
           class="p-error"
           *ngIf="
-            dpeartmentForm.get('head')?.invalid &&
-            dpeartmentForm.get('head')?.touched
+            departmentForm.get('head')?.invalid &&
+            departmentForm.get('head')?.touched
           "
         >
           Head is required.
@@ -42,13 +42,13 @@
         <p-button
           type="submit"
           label="Submit"
-          [disabled]="!dpeartmentForm.valid"
+          [disabled]="!departmentForm.valid"
         ></p-button>
       </div>
       <div *ngIf="editMode" class="card flex justify-content-center">
         <p-button
           label="Update"
-          [disabled]="!dpeartmentForm.valid"
+          [disabled]="!departmentForm.valid"
           (click)="updateDepartment()"
         ></p-button>
       </div>
