@@ -1,0 +1,67 @@
+<p-toast></p-toast>
+<p-confirmPopup></p-confirmPopup>
+
+<div class="topBox">
+  <p-button
+    label="Add Department"
+    styleClass="p-button-outlined"
+    (click)="addDepartment()"
+  ></p-button>
+  <input
+    pInputText
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="filterByName()"
+    placeholder="Search by name"
+  />
+</div>
+<div class="card">
+  <p-table
+    dataKey="email"
+    [value]="filteredDepartments"
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rowsPerPageOptions]="[5, 10, 25, 50]"
+    sortMode="multiple"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name" style="width: 40%">
+          Name <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="head" style="width: 50%">
+          Email <p-sortIcon field="head"></p-sortIcon>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-department>
+      <tr>
+        <td>{{ department.name }}</td>
+        <td>{{ department.head }}</td>
+        <td>
+          <div style="display: flex; justify-content: space-around">
+            <p-button
+              icon="pi pi-file-edit"
+              styleClass="p-button-rounded p-button-text p-button-raised"
+              (click)="confirmUpdate($event, department)"
+            ></p-button>
+            <p-button
+              icon="pi pi-times"
+              styleClass="p-button-rounded p-button-danger p-button-text p-button-raised"
+              (click)="confirmDelete($event, department)"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
