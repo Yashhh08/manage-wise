@@ -95,7 +95,7 @@ export class EmployeeFormComponent implements OnInit {
 
   getDepartment() {
     this.departmentService.getDepartments(0, 0).subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       this.departments = res;
     }, (err) => {
       console.log(err);
