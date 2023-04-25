@@ -16,20 +16,20 @@ export class LeaveService {
     return this.http.post(this.url, leave);
   }
 
-  getLeaves(limit: number, skip: number): Observable<any> {
-    return this.http.get(`${this.url} ? limit = ${limit} & skip=${skip}`);
+  getLeaves(): Observable<any> {
+    return this.http.get(`${this.url}`);
   }
 
   getLeaveById(id: string): Observable<any> {
-    return this.http.get(`${this.url} / ${id}`);
+    return this.http.get(`${this.url}/${id}`);
   }
 
   updateLeave(id: string, leave: unknown): Observable<any> {
-    return this.http.patch(`${this.url} / ${id}`, leave);
+    return this.http.patch(`${this.url}/${id}`, leave);
   }
 
   deleteLeave(id: string): Observable<any> {
-    return this.http.delete(`${this.url} / ${id}`);
+    return this.http.delete(`${this.url}/${id}`);
   }
 
 }
