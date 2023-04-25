@@ -1,0 +1,72 @@
+<p-toast></p-toast>
+<div class="login-wrapper">
+  <div class="form-wrapper">
+    <h1>Manage Wise</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <h2>SignUp</h2>
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="username">Username</label>
+          <input
+            type="input"
+            formControlName="username"
+            class="p-inputtext p-component"
+          />
+          <small
+            *ngIf="
+              signupForm.get('username')?.hasError('required') &&
+              signupForm.get('username')?.touched
+            "
+            class="p-error"
+            >Username is required.</small
+          >
+        </div>
+        <div class="p-field">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="p-inputtext p-component"
+          />
+          <small
+            *ngIf="
+              signupForm.get('email')?.hasError('required') &&
+              signupForm.get('email')?.touched
+            "
+            class="p-error"
+            >Email is required.</small
+          >
+          <small
+            *ngIf="
+              signupForm.get('email')?.hasError('email') &&
+              signupForm.get('email')?.touched
+            "
+            class="p-error"
+            >Invalid email address.</small
+          >
+        </div>
+        <div class="p-field">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="p-inputtext p-component"
+          />
+          <small
+            *ngIf="
+              signupForm.get('password')?.hasError('required') &&
+              signupForm.get('password')?.touched
+            "
+            class="p-error"
+            >Password is required.</small
+          >
+        </div>
+      </div>
+      <p-button
+        type="submit"
+        [disabled]="!signupForm.valid"
+        label="SignUp"
+      ></p-button>
+    </form>
+  </div>
+</div>
