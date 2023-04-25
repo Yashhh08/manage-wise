@@ -75,13 +75,13 @@ export class LayoutComponent implements OnInit {
       {
         label: 'Add Department',
         icon: 'pi pi-fw pi-plus',
-        routerLink: [],
+        routerLink: ['/home/departmentForm'],
         visible: role === "admin"
       },
       {
         label: 'Manage Department',
         icon: 'pi pi-fw pi-list',
-        routerLink: []
+        routerLink: ['/home/departments']
       }
     ];
 

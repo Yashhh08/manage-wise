@@ -35,7 +35,7 @@ export class AttendanceFormComponent implements OnInit {
 
     this.selectedAttendance = this.dynamicDialogConfig.data;
 
-    console.log("sa", this.selectedAttendance);
+    // console.log("sa", this.selectedAttendance);
 
     this.getAllEmployees();
 
@@ -50,8 +50,6 @@ export class AttendanceFormComponent implements OnInit {
     if (this.selectedAttendance) {
 
       this.editMode = true;
-
-      console.log(this.editMode)
 
       this.attendanceForm.patchValue({
         employeeId: this.selectedAttendance.employeeId._id,

@@ -25,7 +25,7 @@ export class DepartmentService {
   }
 
   updateDepartment(id: string, department: unknown): Observable<any> {
-    return this.http.put(`${this.url}/${id}`, department);
+    return this.http.patch(`${this.url}/${id}`, department);
   }
 
   deleteDepartment(id: string): Observable<any> {

@@ -24,17 +24,53 @@ import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
+import { SidebarModule } from 'primeng/sidebar';
+import { ToolbarModule } from 'primeng/toolbar';
 
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { LayoutComponent } from './components/layout/layout.component';
+import { AccordionModule } from 'primeng/accordion';
+import { ListboxModule } from 'primeng/listbox';
+import { MenuModule } from 'primeng/menu';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { SignupComponent } from './components/signup/signup.component';
+import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { EmployeesComponent } from './components/employees/employees.component';
+import { TableModule } from 'primeng/table';
+import {
+  DialogService,
+  DynamicDialogModule,
+  DynamicDialogConfig,
+} from 'primeng/dynamicdialog';
+import { AttendanceFormComponent } from './components/attendance-form/attendance-form.component';
+import { AttendancesComponent } from './components/attendances/attendances.component';
+import { TimeFormatPipe } from './timeFormatPipe.pipe';
+import { DepartmentFormComponent } from './components/department-form/department-form.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    LayoutComponent,
+    SignupComponent,
+    EmployeeFormComponent,
+    EmployeesComponent,
+    AttendanceFormComponent,
+    AttendancesComponent,
+    TimeFormatPipe,
+    DepartmentFormComponent,
+    DepartmentsComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     RippleModule,
     ButtonModule,
@@ -47,13 +83,36 @@ import { MessageService } from 'primeng/api';
     CardModule,
     MessageModule,
     MessagesModule,
-    ToastModule
+    ToastModule,
+    SidebarModule,
+    ToolbarModule,
+    AccordionModule,
+    ListboxModule,
+    MenuModule,
+    ConfirmPopupModule,
+    CalendarModule,
+    DropdownModule,
+    TableModule,
+    DynamicDialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    MessageService
+    MessageService,
+    ConfirmationService,
+    DialogService,
+    DynamicDialogConfig,
   ],
   bootstrap: [AppComponent],
-  exports: [LoginComponent],
+  exports: [
+    LoginComponent,
+    LayoutComponent,
+    SignupComponent,
+    EmployeeFormComponent,
+    EmployeesComponent,
+    AttendanceFormComponent,
+    AttendancesComponent,
+    DepartmentFormComponent,
+    DepartmentsComponent,
+  ],
 })
-export class AppModule { }
+export class AppModule {}
