@@ -1,0 +1,57 @@
+<form [formGroup]="dpeartmentForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <h2 style="text-align: center">Department</h2>
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="name">Name*</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          class="p-inputtext p-component"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            dpeartmentForm.get('name')?.invalid &&
+            dpeartmentForm.get('name')?.touched
+          "
+        >
+          Name is required.
+        </small>
+      </div>
+      <div class="p-field">
+        <label for="email">Head*</label>
+        <input
+          id="head"
+          type="text"
+          formControlName="head"
+          class="p-inputtext p-component"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            dpeartmentForm.get('head')?.invalid &&
+            dpeartmentForm.get('head')?.touched
+          "
+        >
+          Head is required.
+        </small>
+      </div>
+      <div *ngIf="!editMode" class="card flex justify-content-center">
+        <p-button
+          type="submit"
+          label="Submit"
+          [disabled]="!dpeartmentForm.valid"
+        ></p-button>
+      </div>
+      <div *ngIf="editMode" class="card flex justify-content-center">
+        <p-button
+          label="Update"
+          [disabled]="!dpeartmentForm.valid"
+          (click)="updateDepartment()"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</form>
