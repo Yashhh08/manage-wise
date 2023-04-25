@@ -8,6 +8,8 @@ import { AttendanceFormComponent } from './components/attendance-form/attendance
 import { AttendancesComponent } from './components/attendances/attendances.component';
 import { DepartmentFormComponent } from './components/department-form/department-form.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { LeaveFormComponent } from './components/leave-form/leave-form.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
 
 export const appRoutes: Route[] = [
     {
@@ -35,6 +37,12 @@ export const appRoutes: Route[] = [
             },
             {
                 path: "departments", component: DepartmentsComponent
+            },
+            {
+                path: "leaveForm", component: LeaveFormComponent
+            },
+            {
+                path: "leaves", component: LeavesComponent
             }
         ]
     }

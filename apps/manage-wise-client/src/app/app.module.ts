@@ -50,6 +50,8 @@ import { AttendancesComponent } from './components/attendances/attendances.compo
 import { TimeFormatPipe } from './timeFormatPipe.pipe';
 import { DepartmentFormComponent } from './components/department-form/department-form.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { LeaveFormComponent } from './components/leave-form/leave-form.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { DepartmentsComponent } from './components/departments/departments.compo
     TimeFormatPipe,
     DepartmentFormComponent,
     DepartmentsComponent,
+    LeaveFormComponent,
+    LeavesComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,6 +117,8 @@ import { DepartmentsComponent } from './components/departments/departments.compo
     AttendancesComponent,
     DepartmentFormComponent,
     DepartmentsComponent,
+    LeaveFormComponent,
+    LeavesComponent,
   ],
 })
 export class AppModule {}
