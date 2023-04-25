@@ -1,0 +1,26 @@
+.container {
+  width: 60%;
+  margin-left: 20%;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 4%;
+}
+
+.p-field {
+  margin-bottom: 1rem;
+}
+
+.p-inputtext {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.p-error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+}

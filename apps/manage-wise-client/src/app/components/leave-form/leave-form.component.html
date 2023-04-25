@@ -1,0 +1,99 @@
+<form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <h2 style="text-align: center">Department</h2>
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="leaveType">Leave Type*</label>
+        <p-dropdown
+          formControlName="leaveType"
+          [options]="leaveTypes"
+          optionLabel="name"
+          optionValue="name"
+          placeholder="Select type"
+        ></p-dropdown>
+        <small
+          class="p-error"
+          *ngIf="
+            leaveForm.get('leaveType')?.invalid &&
+            leaveForm.get('leaveType')?.touched
+          "
+        >
+          Leave type is required.
+        </small>
+      </div>
+
+      <div class="p-field">
+        <label for="description">Description*</label>
+        <textarea
+          class="p-inputtext p-component"
+          rows="5"
+          cols="30"
+          pInputTextarea
+          formControlName="description"
+        ></textarea>
+        <small
+          class="p-error"
+          *ngIf="
+            leaveForm.get('description')?.invalid &&
+            leaveForm.get('description')?.touched
+          "
+        >
+          Description is required.
+        </small>
+      </div>
+
+      <div class="p-field">
+        <label for="startDate">Start Date*</label>
+        <p-calendar formControlName="startDate" [showIcon]="true"></p-calendar>
+        <small
+          class="p-error"
+          *ngIf="
+            leaveForm.get('startDate')?.invalid &&
+            leaveForm.get('startDate')?.touched
+          "
+        >
+          Start Date is required.
+        </small>
+      </div>
+
+      <div class="p-field">
+        <label for="endDate">End Date*</label>
+        <p-calendar formControlName="endDate" [showIcon]="true"></p-calendar>
+        <small
+          class="p-error"
+          *ngIf="
+            leaveForm.get('endDate')?.invalid &&
+            leaveForm.get('endDate')?.touched
+          "
+        >
+          End Date is required.
+        </small>
+      </div>
+
+      <div *ngIf="editMode && currentUser?.role === 'admin'" class="p-field">
+        <label for="status">Status*</label>
+        <p-dropdown
+          formControlName="status"
+          [options]="leaveStatus"
+          optionLabel="name"
+          optionValue="name"
+        ></p-dropdown>
+      </div>
+
+      <div *ngIf="!editMode" class="card flex justify-content-center">
+        <p-button
+          type="submit"
+          label="Submit"
+          [disabled]="!leaveForm.valid"
+        ></p-button>
+      </div>
+      <div *ngIf="editMode" class="card flex justify-content-center">
+        <p-button
+          label="Update"
+          [disabled]="!leaveForm.valid"
+          (click)="updateLeave()"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</form>
