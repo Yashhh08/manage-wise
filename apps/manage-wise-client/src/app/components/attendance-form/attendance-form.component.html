@@ -1,0 +1,117 @@
+<div class="container">
+  <form [formGroup]="attendanceForm" (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center">Attendance</h2>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-4">
+        <label for="employeeId">Employee ID</label>
+        <p-dropdown
+          formControlName="employeeId"
+          [options]="employees"
+          optionLabel="name"
+          optionValue="_id"
+          [filter]="true"
+          filterBy="name"
+          placeholder="Select Employee"
+        ></p-dropdown>
+        <small
+          *ngIf="
+            attendanceForm.get('employeeId')?.invalid &&
+            attendanceForm.get('employeeId')?.touched
+          "
+          class="p-error"
+          >Employee ID is required</small
+        >
+      </div>
+
+      <div class="p-field p-col-12 p-md-4">
+        <label for="date">Date</label>
+        <p-calendar
+          id="date"
+          formControlName="date"
+          [showIcon]="true"
+          [showButtonBar]="true"
+        ></p-calendar>
+        <small
+          *ngIf="
+            attendanceForm.get('date')?.invalid &&
+            attendanceForm.get('date')?.touched
+          "
+          class="p-error"
+          >Date is required</small
+        >
+      </div>
+
+      <div class="p-field p-col-12 p-md-4">
+        <label for="inTime">In Time</label>
+        <p-calendar
+          formControlName="inTime"
+          [timeOnly]="true"
+          hourFormat="24"
+          [required]="true"
+          dateFormat="hh:mm:ss"
+        ></p-calendar>
+        <small
+          *ngIf="
+            attendanceForm.get('inTime')?.invalid &&
+            attendanceForm.get('inTime')?.touched
+          "
+          class="p-error"
+          >In Time is required</small
+        >
+      </div>
+
+      <div class="p-field p-col-12 p-md-4">
+        <label for="outTime">Out Time</label>
+        <p-calendar
+          formControlName="outTime"
+          [timeOnly]="true"
+          hourFormat="24"
+          [required]="true"
+          dateFormat="hh:mm:ss"
+        ></p-calendar>
+        <small
+          *ngIf="
+            attendanceForm.get('outTime')?.invalid &&
+            attendanceForm.get('outTime')?.touched
+          "
+          class="p-error"
+          >Out Time is required</small
+        >
+      </div>
+
+      <div class="p-field p-col-12 p-md-4">
+        <label for="status">Status</label>
+        <p-dropdown
+          formControlName="status"
+          [options]="statusOptions"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="Select status"
+        ></p-dropdown>
+        <small
+          *ngIf="
+            attendanceForm.get('status')?.invalid &&
+            attendanceForm.get('status')?.touched
+          "
+          class="p-error"
+          >Status is required</small
+        >
+      </div>
+    </div>
+
+    <div *ngIf="!editMode" class="card flex justify-content-center">
+      <p-button
+        type="submit"
+        label="Submit"
+        [disabled]="!attendanceForm.valid"
+      ></p-button>
+    </div>
+    <div *ngIf="editMode" class="card flex justify-content-center">
+      <p-button
+        label="Update"
+        [disabled]="!attendanceForm.valid"
+        (click)="updateAttendance()"
+      ></p-button>
+    </div>
+  </form>
+</div>
