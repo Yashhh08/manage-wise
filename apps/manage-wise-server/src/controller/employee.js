@@ -38,7 +38,10 @@ router.get("/employees", auth, async (req, res) => {
       skip = parseInt(req.query.skip);
     }
 
-    const employees = await Employee.find().limit(limit).skip(skip);
+    const employees = await Employee.find()
+      .limit(limit)
+      .skip(skip)
+      .populate("departmentId");
 
     if (employees.length > 0) {
       res.status(200).send(employees);
