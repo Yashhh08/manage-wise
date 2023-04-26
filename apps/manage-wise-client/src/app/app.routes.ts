@@ -10,6 +10,7 @@ import { DepartmentFormComponent } from './components/department-form/department
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { LeaveFormComponent } from './components/leave-form/leave-form.component';
 import { LeavesComponent } from './components/leaves/leaves.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const appRoutes: Route[] = [
     {
@@ -20,6 +21,9 @@ export const appRoutes: Route[] = [
     },
     {
         path: "home", component: LayoutComponent, children: [
+            {
+                path: "", component: DashboardComponent
+            },
             {
                 path: "employeeForm", component: EmployeeFormComponent
             },

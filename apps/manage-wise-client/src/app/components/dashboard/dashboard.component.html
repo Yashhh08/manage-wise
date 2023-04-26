@@ -1,0 +1,57 @@
+<div class="cards-container">
+  <div *ngIf="currentUser?.role === 'admin'" class="cardd">
+    <div class="card-icon">
+      <i class="pi pi-users"></i>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Employee Count</div>
+      <div class="card-subtitle">
+        employees:
+        <span class="count">{{ employees?.length }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cardd">
+    <div class="card-icon">
+      <i class="pi pi-briefcase"></i>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Department Count</div>
+      <div class="card-subtitle">
+        Departments:
+        <span class="count">{{ departments?.length }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cardd">
+    <div class="card-icon">
+      <i class="pi pi-hourglass"></i>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Pending Leaves</div>
+      <div class="card-subtitle">
+        Leaves:
+        <span class="count">{{ pendingLeaves?.length }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cardd">
+    <div class="card-icon">
+      <i class="pi pi-thumbs-up"></i>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Tasks Completed</div>
+      <div class="card-subtitle">
+        Completed:
+        <span class="count">100</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+</div>

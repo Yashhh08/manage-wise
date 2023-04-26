@@ -52,6 +52,8 @@ import { DepartmentFormComponent } from './components/department-form/department
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { LeaveFormComponent } from './components/leave-form/leave-form.component';
 import { LeavesComponent } from './components/leaves/leaves.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { LeavesComponent } from './components/leaves/leaves.component';
     DepartmentsComponent,
     LeaveFormComponent,
     LeavesComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +101,7 @@ import { LeavesComponent } from './components/leaves/leaves.component';
     DropdownModule,
     TableModule,
     DynamicDialogModule,
+    ChartModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
@@ -119,6 +123,7 @@ import { LeavesComponent } from './components/leaves/leaves.component';
     DepartmentsComponent,
     LeaveFormComponent,
     LeavesComponent,
+    DashboardComponent,
   ],
 })
-export class AppModule {}
+export class AppModule { }
