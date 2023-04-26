@@ -9,6 +9,7 @@
     (click)="addLeave()"
   ></p-button>
   <input
+    *ngIf="currentUser?.role === 'admin'"
     pInputText
     type="text"
     [(ngModel)]="searchTerm"

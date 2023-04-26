@@ -3,11 +3,13 @@
 
 <div class="topBox">
   <p-button
+    *ngIf="currentUser?.role === 'admin'"
     label="Add Attendance"
     styleClass="p-button-outlined"
     (click)="addAttendance()"
   ></p-button>
   <input
+    *ngIf="currentUser?.role === 'admin'"
     pInputText
     type="text"
     [(ngModel)]="searchTerm"
@@ -55,7 +57,7 @@
         <th pSortableColumn="status" style="width: 20%">
           Status <p-sortIcon field="status"></p-sortIcon>
         </th>
-        <th>Actions</th>
+        <th *ngIf="currentUser?.role === 'admin'">Actions</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-attendace>
@@ -67,7 +69,7 @@
         <td>{{ attendace.inTime | timeFormat }}</td>
         <td>{{ attendace.outTime | timeFormat }}</td>
         <td>{{ attendace.status }}</td>
-        <td>
+        <td *ngIf="currentUser?.role === 'admin'">
           <div style="display: flex; justify-content: space-around">
             <p-button
               icon="pi pi-file-edit"

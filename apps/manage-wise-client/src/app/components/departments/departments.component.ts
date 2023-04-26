@@ -4,6 +4,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DepartmentService } from '../../services/department.service';
 import { DepartmentFormComponent } from '../department-form/department-form.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'manage-wise-departments',
@@ -20,9 +21,12 @@ export class DepartmentsComponent implements OnInit {
 
   ref!: DynamicDialogRef;
 
-  constructor(private departmentService: DepartmentService, private confirmationService: ConfirmationService, private messageService: MessageService, private dialogService: DialogService) { }
+  currentUser!: any;
+
+  constructor(private departmentService: DepartmentService, private confirmationService: ConfirmationService, private messageService: MessageService, private dialogService: DialogService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getProfile();
     this.getAllDepartments();
   }
 
@@ -116,5 +120,11 @@ export class DepartmentsComponent implements OnInit {
     });
   }
 
+  getProfile() {
+    this.userService.getProfile().subscribe((res) => {
+      this.currentUser = res;
+    })
+
+  }
 
 }

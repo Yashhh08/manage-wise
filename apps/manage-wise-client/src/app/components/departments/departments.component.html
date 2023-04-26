@@ -3,6 +3,7 @@
 
 <div class="topBox">
   <p-button
+    *ngIf="currentUser?.role === 'admin'"
     label="Add Department"
     styleClass="p-button-outlined"
     (click)="addDepartment()"
@@ -47,7 +48,7 @@
       <tr>
         <td>{{ department.name }}</td>
         <td>{{ department.head }}</td>
-        <td>
+        <td *ngIf="currentUser?.role === 'admin'">
           <div style="display: flex; justify-content: space-around">
             <p-button
               icon="pi pi-file-edit"

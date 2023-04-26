@@ -4,6 +4,7 @@ import { AttendanceService } from './../../services/attendance.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AttendanceFormComponent } from '../attendance-form/attendance-form.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'manage-wise-attendances',
@@ -20,9 +21,12 @@ export class AttendancesComponent implements OnInit {
 
   ref!: DynamicDialogRef;
 
-  constructor(private attendanceService: AttendanceService, private confirmationService: ConfirmationService, private messageService: MessageService, private dialogService: DialogService) { }
+  currentUser!: any;
+
+  constructor(private attendanceService: AttendanceService, private confirmationService: ConfirmationService, private messageService: MessageService, private dialogService: DialogService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getProfile();
     this.getAllAttendaces();
   }
 
@@ -56,7 +60,7 @@ export class AttendancesComponent implements OnInit {
   getAllAttendaces() {
     this.attendanceService.getAttendances(0, 0).subscribe((res) => {
       // console.log(res);
-      
+
       this.attendances = res;
       this.filteredAttendance = this.attendances;
     }, (err) => {
@@ -115,6 +119,12 @@ export class AttendancesComponent implements OnInit {
     this.ref.onMaximize.subscribe((value) => {
       this.messageService.add({ severity: 'info', summary: 'Maximized', detail: `maximized: ${value.maximized}` });
     });
+  }
+
+  getProfile() {
+    this.userService.getProfile().subscribe((res) => {
+      this.currentUser = res;
+    })
   }
 
 }
