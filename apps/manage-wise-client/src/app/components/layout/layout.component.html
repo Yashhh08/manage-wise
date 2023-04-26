@@ -3,6 +3,13 @@
 
 <div class="app-layout">
   <p-sidebar [(visible)]="sidebarVisible">
+    <p-button
+      routerLink="/home"
+      label="Dashboard"
+      styleClass="p-button-raised p-button-text"
+      class="sidebar-button card flex justify-content-center"
+    ></p-button>
+
     <div class="card flex justify-content-center">
       <p-accordion *ngIf="sidebarVisible">
         <p-accordionTab *ngIf="currentUser.role === 'admin'" header="Employee">
@@ -25,11 +32,11 @@
             <p-menu [model]="leaveTab"></p-menu>
           </div>
         </p-accordionTab>
-        <p-accordionTab header="Performance"
+        <!-- <p-accordionTab header="Performance"
           ><div class="card flex justify-content-center">
             <p-menu [model]="performanceTab"></p-menu>
           </div>
-        </p-accordionTab>
+        </p-accordionTab> -->
       </p-accordion>
     </div>
   </p-sidebar>
