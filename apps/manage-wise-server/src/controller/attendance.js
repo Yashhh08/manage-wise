@@ -2,6 +2,7 @@ const express = require("express");
 const Attendance = require("../model/attendance");
 const auth = require("../middleware/auth");
 const Employee = require("../model/employee");
+const User = require("../model/user");
 
 const router = new express.Router();
 
@@ -31,9 +32,9 @@ router.post("/attendances", auth, async (req, res) => {
 
 router.get("/attendances", auth, async (req, res) => {
   try {
-    if (req.user.role !== "admin") {
-      return res.status(401).send({ error: "unAuthorized..!!" });
-    }
+    // if (req.user.role !== "admin") {
+    //   return res.status(401).send({ error: "unAuthorized..!!" });
+    // }
 
     let limit = 0;
     let skip = 0;
@@ -46,10 +47,23 @@ router.get("/attendances", auth, async (req, res) => {
       skip = parseInt(req.query.skip);
     }
 
-    const attendances = await Attendance.find()
-      .populate("employeeId")
-      .limit(limit)
-      .skip(skip);
+    let attendances = null;
+
+    if (req.user.role === "admin") {
+      attendances = await Attendance.find()
+        .populate("employeeId")
+        .limit(limit)
+        .skip(skip);
+    } else {
+      const user = req.user;
+
+      const employee = await Employee.findOne({ email: user.email });
+
+      attendances = await Attendance.find({ employeeId: employee._id })
+        .populate("employeeId")
+        .limit(limit)
+        .skip(skip);
+    }
 
     if (attendances.length > 0) {
       res.status(200).send(attendances);
