@@ -19,3 +19,52 @@ Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and 
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+# Manage-Wise
+
+Manage-Wise is a web-based employee management application that I designed and built using Node.js, Express, MongoDB, and Angular. The app is designed to help businesses streamline their human resources processes by providing a centralized platform for managing employee-related tasks.
+
+The app includes a user authentication system that allows employees to sign up and log in securely using JWT tokens. As an admin, users can add employees to the system and manage their attendance, departments, and leaves. Employees can also use the app to add leave requests, view their attendance records, manage their leaves, and see department information.
+
+To create this app, I leveraged my expertise in full-stack web development, using Node.js, Express, and MongoDB for the backend and Angular for the frontend. I also implemented best practices in security, such as password hashing, JWT token authentication, and input validation, to ensure that the app is secure and reliable.
+
+Overall, Manage-Wise is a robust and user-friendly application that helps businesses manage their human resources more efficiently. It demonstrates my skills in full-stack web development, database management, and security, and would make a valuable addition to any resume.
+
+## Technologies Used
+
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Angular](https://angular.io/)
+- [PrimeNG](https://primeng.org/)
+- [Nx](https://nx.dev/)
+
+## Features
+
+- User authentication with JWT token
+- Admin can add employees, manage attendance, departments and leaves
+- Employees can add leave requests, view attendance records, manage leaves and see department information
+
+## Usage
+
+To start server : nx serve manage-wise-server
+
+To start client : nx serve manage-wise-client
+
+### Admin Features
+
+To access the admin features, log in with the admin account:
+
+- Username: admin@gmail.com
+- Password: admin@123
+
+Once logged in, you can add employees, manage their attendance, departments, and leaves.
+
+### Employee Features
+
+To access the employee features, log in with an employee account:
+
+- Username: employee@gmail.com
+- Password: employee@123
+
+Once logged in, you can add leave requests, view attendance records, manage leaves, and see department information.
