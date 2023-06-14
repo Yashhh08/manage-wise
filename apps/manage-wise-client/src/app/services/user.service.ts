@@ -10,6 +10,8 @@ export class UserService {
 
   private url = "http://localhost:3333/users"
 
+  // private url = "mongodb+srv://yashhh08:Mongodb%40101@cluster0.p9ansmx.mongodb.net/users"
+
   constructor(private http: HttpClient) { }
 
   createUser(user: unknown): Observable<any> {

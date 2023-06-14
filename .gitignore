@@ -41,3 +41,7 @@ Thumbs.db
 .angular
 
 .env
+.vercel
+
+# Local Netlify folder
+.netlify
