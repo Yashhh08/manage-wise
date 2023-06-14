@@ -8,9 +8,7 @@ import { Observable } from 'rxjs';;
 })
 export class UserService {
 
-  // private url = "http://localhost:3333/users"
-
-  private url = "mongodb+srv://yashhh08:Mongodb%40101@cluster0.p9ansmx.mongodb.net/manage-wise-server/users"
+  private url = "http://localhost:3333/users"
 
   constructor(private http: HttpClient) { }
 
